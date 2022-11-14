@@ -10,8 +10,15 @@ const Nav = () => {
 
             <ul className='navLinks'>
                 <li>
-                    <Link to =''>
-                    
+                    <Link to ='/'>
+                        Shop
+                    </Link>
+                </li>
+                <li>
+                    <Link to ='/cart'>
+                        <i className='fas fa-shopping-cart'></i>
+                        Cart
+                        <span className='cartCounter'>0</span>
                     </Link>
                 </li>
             </ul>
