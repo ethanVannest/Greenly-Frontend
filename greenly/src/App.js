@@ -1,6 +1,9 @@
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
+import Home from './PageRoutes/Home'
+import Cart from './PageRoutes/Cart'
+import ShowProduct from './PageRoutes/ShowProduct';
 
 function App() {
   return (
