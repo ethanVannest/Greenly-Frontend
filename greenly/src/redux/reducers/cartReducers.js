@@ -1,23 +1,44 @@
 import * as requestTypes from '../constants/cartConstants'
 
 const cartReducer = (state = { cartItems: [] }, action ) => {
-    if (action.type !== requestTypes.addCart){
-        return state
-    } else {
-        const item = action.payload
+    switch (action.type){
+        case requestTypes.addCart:
+            const item = action.payload
 
-        const existItem = state.cartItems.find((x) => x.product === item.product)
-        if(existItem) {
-            return{
-                ...state,
-                cartItems: state.cartItems.map((x) => x.product === existItem.product ? item : x)
+            const existItem = state.cartItems.find((x) => x.product === item.product)
+            if(existItem) {
+                return{
+                    ...state,
+                    cartItems: state.cartItems.map((x) => x.product === existItem.product ? item : x)
+                }
+            } else {
+                return{
+                    ...state,
+                    cartItems: [...state.cartItems, item]
+                }
             }
-        } else {
-            return{
+        case requestTypes.removeCart:
+            return {
                 ...state,
-                cartItems: [...state.cartItems, item]
+                cartItems: state.cartItems.filter((x) => x.product !== action.payload)
             }
-        }
+            default: 
+                return state
     }
-
+    
 }
+
+
+if(existItem) {
+    return{
+        ...state,
+        cartItems: state.cartItems.map((x) => x.product === existItem.product ? item : x)
+    }
+} else {
+    return{
+        ...state,
+        cartItems: [...state.cartItems, item]
+    }
+}
+
+export { cartReducer }
