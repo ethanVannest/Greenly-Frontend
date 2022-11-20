@@ -1,16 +1,18 @@
 const getProducts = 'getProducts'
 const getProductsSuccess = 'getProductsSuccess'
-const getProudctsFail = 'getProductsFail'
+const getProductsFail = 'getProductsFail'
 
 const getProduct = 'getProduct'
 const getProductSuccess = 'getProductSuccess'
-const getProudctFail = 'getProductFail'
+const getProductFail = 'getProductFail'
+const getProductClear = 'getProductsClear'
 
 export { 
-    getProudctFail, 
+    getProductClear,
+    getProductFail, 
     getProductSuccess, 
     getProduct, 
-    getProudctsFail, 
+    getProductsFail, 
     getProductsSuccess, 
     getProducts 
 }

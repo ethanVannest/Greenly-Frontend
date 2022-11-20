@@ -5,9 +5,14 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { cartReducer } from './reducers/cartReducers'
+import { productShowReducer, getProductsReducer } from './reducers/productReducers'
+
 
 const reducer = combineReducers({
-    cart: cartReducer
+    cart: cartReducer,
+    getProducts: getProductsReducer,
+    showProducts: productShowReducer
+
 })
 
 // const middleware = {thunk}
