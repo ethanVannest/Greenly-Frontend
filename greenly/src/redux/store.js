@@ -12,7 +12,6 @@ const reducer = combineReducers({
     cart: cartReducer,
     getProducts: getProductsReducer,
     showProducts: productShowReducer
-
 })
 
 // const middleware = {thunk}

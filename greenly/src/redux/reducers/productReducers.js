@@ -34,7 +34,7 @@ const productShowReducer = (state = { product: {}}, action) => {
                 loading: false,
                 product: action.payload
             }
-        case requestTypes.getProudctFail:
+        case requestTypes.getProductFail:
             return {
                 loading: false,
                 error: action.payload
