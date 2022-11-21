@@ -35,31 +35,32 @@ const ShowProduct = ({match, history}) => {
             <>
              <div>
             <div>
-            <img src="https://media.direct.playstation.com/is/image/sierialto/PS5-front-with-dualsense" alt="Product"/>
+            <img src={product.image
+            }alt={product.name}
+            />
             </div>
 
             <div>
-                <p>Product 1</p>
-                <p>Price: 500</p>
-                <p>Description: dfasdf asffdds snfkn sdfi wwef sdif ao soaisfdiohsafd iasd </p>
+                <p>{product.name}</p>
+                <p>{product.price}</p>
+                <p>{product.description}</p>
             </div>
         </div>
         
         <div>
             <div>
                 <p>
-                    Price: <span>$500</span>
+                    Price: <span>{product.price}</span>
                 </p>
                 <p>
-                    Status: <span>In Stock</span>
+                    Status: <span>{product.stocked > 0 ? "In Stock" : "Out of Stock"}</span>
                 </p>
                 <p>
                     Quantity: 
-                    <select>
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
+                    <select value={qty} onChange={(e) => setQty(e.target.value)}>
+                        {[...Array(product.stocked).keys()].map((x) => (
+                            <option key={x + 1} value={x+1}>{x + 1}</option>
+                        ))}
                     </select>
                 </p>
                 <p>

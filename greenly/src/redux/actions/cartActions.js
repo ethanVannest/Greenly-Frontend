@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as requestTypes from '../constants/cartConstants'
 
-const addToCart = (id, quantity) => async (dispatch, getState) => {
+const addToCart = (id, qty) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/products/${id}`)
 
     dispatch({
@@ -12,7 +12,7 @@ const addToCart = (id, quantity) => async (dispatch, getState) => {
             price: data.price,
             image: data.image,
             stocked: data.stocked,
-            quantity
+            qty
         }
     })
     localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
