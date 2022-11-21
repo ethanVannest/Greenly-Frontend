@@ -9,9 +9,9 @@ const Home = () => {
 
     const dispatch = useDispatch()
 
-    const grabProduct = useSelector(state => state.grabProduct)
+    const grabProduct = useSelector(state => state.getProducts)
 
-    // const {products, loading, error} = grabProduct
+    const {products, loading, error} = grabProduct
 
     useEffect(() => {
         dispatch(indexOfProducts())
@@ -21,7 +21,11 @@ const Home = () => {
         <div className='HomePage'>Home
             <h2>Featured Items</h2>
             <div>
-                <Product />
+                {loading ? (<h2> Loading...</h2>)
+                : error ? (<h2> {error} </h2>)
+                :products.map((product) => (
+                    <Product /> 
+                ))} 
             </div>
         </div>
     )
