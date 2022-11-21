@@ -9,7 +9,7 @@ const getProductsReducer = (state = { products: [] }, action ) => {
             }
         case requestTypes.getProductsSuccess:
             return {
-                loaidng: false,
+                loading: false,
                 products: action.payload
             }
         case requestTypes.getProductsFail:

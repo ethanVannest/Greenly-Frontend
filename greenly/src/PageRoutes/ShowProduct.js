@@ -2,22 +2,31 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getProduct } from '../redux/constants/productConstants'
-import { addCart } from '../redux/constants/cartConstants'
 
+import { indexOfProductsDetails } from '../redux/actions/productActions'
+import { addToCart } from '../redux/actions/cartActions'
+import { useParams } from 'react-router-dom'
+
+
+//DOES NOT READ THE VALUE OF PARAMS FOR AN ID--------------
 const ShowProduct = ({match, history}) => {
-
-const [qty, setQty] = useState(1)
-const dispatch = useDispatch()
-
-const individualProduct = useSelector(state => state.showProducts)
-const {loading, error, product} = individualProduct
-useEffect(() => {
-    if (product && match.params._id !== product._id) {
-        dispatch(individualProduct(match.params.id))
+    
+    const [qty, setQty] = useState(1)
+    const dispatch = useDispatch()
+    
+    
+    const individualProduct = useSelector(state => state.showProducts)
+    
+    const {loading, product, error} = individualProduct
+    
+    const params = useParams()
+    useEffect(() => {
+    if (product && params.id !== product._id) {
+    dispatch(indexOfProductsDetails(params.id))
     }
 }, [dispatch, product, match])
 
+// ----------------------
   return (
     <div className='ShowProductPage'>
         {loading ? <h2>Loading...</h2> 
@@ -59,7 +68,8 @@ useEffect(() => {
             </div>
         </div>
             </>
-        )}
+        )
+        }
        
     </div>
   )

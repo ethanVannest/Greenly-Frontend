@@ -24,6 +24,7 @@ const Home = () => {
                 {loading ? (<h2> Loading...</h2>)
                 : error ? (<h2> {error} </h2>)
                 :products.map((product) => (<Product 
+                key={product._id}
                 name={product.name}
                 price={product.price}
                 image={product.image}
@@ -35,5 +36,4 @@ const Home = () => {
         </div>
     )
 }
-
 export default Home
