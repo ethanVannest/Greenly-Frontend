@@ -23,8 +23,13 @@ const Home = () => {
             <div>
                 {loading ? (<h2> Loading...</h2>)
                 : error ? (<h2> {error} </h2>)
-                :products.map((product) => (
-                    <Product /> 
+                :products.map((product) => (<Product 
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                description={product.description}
+                productId={product._id}
+                /> 
                 ))} 
             </div>
         </div>
