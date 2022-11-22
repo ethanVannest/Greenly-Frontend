@@ -2,24 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const CartItems = () => {
+const CartItems = ({item, qtyChangeHandler, removeHandler}) => {
   return (
     <div>
         <div>
-            <img src="https://media.direct.playstation.com/is/image/sierialto/PS5-front-with-dualsense" alt="Product"/>
+            <img src={item.image} alt={item.name}/>
         </div>
-        <Link to={`/products/${1111}`}>
-            <p>Product 1</p>
+        <Link to={`/products/${item.product}`}>
+            <p>{item.name}</p>
         </Link>
 
-        <p>500</p>
-        <select> 
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
+        <p>${item.price}</p>
+        <select 
+        value={item.qty}
+        onChange={(e) => qtyChangeHandler(item.product, e.target.value)}> 
+        {[...Array(item.stocked).keys()].map((x) => (
+          <option key={x + 1} value={x + 1}>
+            {x + 1}
+          </option>
+        ))}
         </select>
-        <button>
+        <button onClick={removeHandler(item.product)}>
             <i className='fas fa-trash'></i>
         </button>
     </div>
