@@ -5,10 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { indexOfProductsDetails } from '../redux/actions/productActions'
 import { addToCart } from '../redux/actions/cartActions'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 
-//DOES NOT READ THE VALUE OF PARAMS FOR AN ID--------------
 const ShowProduct = ({match, history}) => {
     
     const [qty, setQty] = useState(1)
@@ -20,13 +19,19 @@ const ShowProduct = ({match, history}) => {
     const {loading, product, error} = individualProduct
     
     const params = useParams()
+
+    const navigate = useNavigate()
+
     useEffect(() => {
     if (product && params.id !== product._id) {
     dispatch(indexOfProductsDetails(params.id))
     }
 }, [dispatch, product, match])
 
-// ----------------------
+    const addToCartHandler = () => {
+        dispatch(addToCart(product._id, qty))
+        navigate('/cart')
+    }
   return (
     <div className='ShowProductPage'>
         {loading ? <h2>Loading...</h2> 
@@ -64,7 +69,7 @@ const ShowProduct = ({match, history}) => {
                     </select>
                 </p>
                 <p>
-                    <button type='button'>Add To Cart</button>
+                    <button type='button' onClick={addToCartHandler}>Add To Cart</button>
                 </p>
             </div>
         </div>
