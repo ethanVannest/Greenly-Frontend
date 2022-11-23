@@ -22,7 +22,7 @@ const CartItems = ({item, qtyChangeHandler, removeHandler}) => {
           </option>
         ))}
         </select>
-        <button onClick={removeHandler(item.product)}>
+        <button onClick={() => removeHandler(item.product)}>
             <i className='fas fa-trash'></i>
         </button>
     </div>

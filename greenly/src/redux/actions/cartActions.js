@@ -20,8 +20,8 @@ const addToCart = (id, qty) => async (dispatch, getState) => {
 
 const removeFromCart = (id) => (dispatch, getState) => {
     dispatch({
-        type: requestTypes.cartClear,
-        payload: id
+        type: requestTypes.removeCart,
+        payload: id,
     })
     localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
 }
