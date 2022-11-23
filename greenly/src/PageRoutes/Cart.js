@@ -2,6 +2,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+// import('dotenv').config()
+import axios from 'axios'
+
 
 import CartItems from '../components/CartItems'
 
@@ -32,6 +35,29 @@ export const Cart = () => {
         .reduce((price, item) => price + item.price * item.qty, 0)
         .toFixed(2);
     };
+
+    const proceedToCheckoutHandler = async () => {
+        for (let i in cartItems) {
+            console.log(cartItems[i].product)
+            //Grab single product
+            //grab ID, Qty, Stocked
+            cartItems[i].Stocked = cartItems[i].Stocked - cartItems[i].Qty
+            //AXIOS CALL
+            //
+            const res = await axios ({
+                params: {id: cartItems[i].product},
+                url: 'http://localhost:3000/api/products/',
+                method: 'PUT',
+                data: {stocked: cartItems[i].stocked}
+            })
+            console.log('res',res)
+                //url: await Process.env.REACT_APP_GREENLY_BACKEND
+                //method: 'PUT'
+                //data: {
+            //  }, 
+        }
+            
+    }
   return (
     <>
       <div className="cartscreen">
@@ -60,7 +86,7 @@ export const Cart = () => {
             <p>${getCartSubTotal()}</p>
           </div>
           <div>
-            <button>Proceed To Checkout</button>
+            <button onClick={proceedToCheckoutHandler}>Proceed To Checkout</button>
           </div>
         </div>
       </div>
