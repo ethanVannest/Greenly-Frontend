@@ -3,7 +3,7 @@ import Product from '../components/Products'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {indexOfProducts} from '../redux/actions/productActions'
-
+import '../App.css'
 
 const Home = () => {
 
@@ -18,9 +18,9 @@ const Home = () => {
     }, [dispatch])
 
     return (
-        <div className='HomePage'>Home
-            <h2>Featured Items</h2>
-            <div>
+        <div className='homescreen'>
+            <h2 className='homescreen__title'>Featured Items</h2>
+            <div className='homescreen__products'>
                 {loading ? (<h2> Loading...</h2>)
                 : error ? (<h2> {error} </h2>)
                 :products.map((product) => (<Product 

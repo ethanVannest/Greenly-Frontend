@@ -69,7 +69,8 @@ const ShowProduct = ({match, history}) => {
                     </select>
                 </p>
                 <p>
-                    <button type='button' onClick={addToCartHandler}>Add To Cart</button>
+                    {product.stocked > 0 ? <button type='button' onClick={addToCartHandler}>Add To Cart</button> : "Out of Stock"
+                }
                 </p>
             </div>
         </div>

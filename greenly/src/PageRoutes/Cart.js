@@ -46,7 +46,7 @@ export const Cart = () => {
             console.log(cartItems[i].stocked)
             const res = await axios ({
                 params: {id: cartItems[i].product},
-                url: '/api/products/update/',
+                url: `${process.env.REACT_APP_GREENLY_BACKEND}api/products/update/`,
                 method: 'PUT',
                 data: {stocked: cartItems[i].stocked}
             })

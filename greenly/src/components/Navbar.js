@@ -12,22 +12,21 @@ const Nav = () => {
     }
 
     return(
-            <nav className='nav'>
-            <div className='navLogo'>
-                <h2>Greenly</h2>
+            <nav className='navbar'>
+            <div className='navbar__logo'>
+                <h2 className='title'>Greenly<i class="fa fa-leaf" aria-hidden="true"></i></h2>
             </div>
 
-            <ul className='navLinks'>
+            <ul className='navbar__links'>
                 <li>
-                    <Link to ='/'>
+                    <Link to ='/' className='cart__link'>
                         Shop
                     </Link>
                 </li>
                 <li>
-                    <Link to ='/cart'>
+                    <Link to ='/cart' className='cart__link'>
                         <i className='fas fa-shopping-cart'></i>
-                        Cart
-                        <span className='cartCounter'>{getCartCount()}</span>
+                        <span className='cartlogo__badge'>{getCartCount()}</span>
                     </Link>
                 </li>
             </ul>
