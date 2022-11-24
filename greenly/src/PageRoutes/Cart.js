@@ -38,15 +38,15 @@ export const Cart = () => {
 
     const proceedToCheckoutHandler = async () => {
         for (let i in cartItems) {
-            console.log(cartItems[i].product)
+            console.log(cartItems[i])
             //Grab single product
             //grab ID, Qty, Stocked
-            cartItems[i].Stocked = cartItems[i].Stocked - cartItems[i].Qty
+            cartItems[i].stocked = cartItems[i].stocked - parseInt(cartItems[i].qty)
             //AXIOS CALL
-            //
+            console.log(cartItems[i].stocked)
             const res = await axios ({
                 params: {id: cartItems[i].product},
-                url: 'http://localhost:3000/api/products/',
+                url: '/api/products/update/',
                 method: 'PUT',
                 data: {stocked: cartItems[i].stocked}
             })
