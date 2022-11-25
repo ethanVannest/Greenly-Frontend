@@ -1,2 +1,2 @@
 # Greenly-Frontend
-https://green-ly.herokuapp.com/
+https://heroku-greenly.herokuapp.com/

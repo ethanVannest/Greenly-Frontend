@@ -14,7 +14,7 @@ const Nav = () => {
     return(
             <nav className='navbar'>
             <div className='navbar__logo'>
-                <h2 className='title'>Greenly<i class="fa fa-leaf" aria-hidden="true"></i></h2>
+                <h2 className='title'>Greenly<i className="fa fa-leaf" aria-hidden="true"></i></h2>
             </div>
 
             <ul className='navbar__links'>
