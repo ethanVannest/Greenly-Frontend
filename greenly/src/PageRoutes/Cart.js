@@ -8,7 +8,7 @@ import axios from 'axios'
 
 import CartItems from '../components/CartItems'
 
-import { addToCart, removeFromCart } from '../redux/actions/cartActions'
+import { addToCart, removeFromCart, updateFromCart } from '../redux/actions/cartActions'
 
 export const Cart = () => {
     const dispatch = useDispatch();
@@ -36,25 +36,12 @@ export const Cart = () => {
         .toFixed(2);
     };
 
-    const proceedToCheckoutHandler = async () => {
+    const proceedToCheckoutHandler = (id, qty) => {
         for (let i in cartItems) {
-            console.log(cartItems[i])
-            //Grab single product
-            //grab ID, Qty, Stocked
             cartItems[i].stocked = cartItems[i].stocked - parseInt(cartItems[i].qty)
             //AXIOS CALL
-            console.log(cartItems[i].stocked)
-            const res = await axios ({
-                params: {id: cartItems[i].product},
-                url: `${process.env.REACT_APP_GREENLY_BACKEND}api/products/update/`,
-                method: 'PUT',
-                data: {stocked: cartItems[i].stocked}
-            })
-            console.log('res',res)
-                //url: await Process.env.REACT_APP_GREENLY_BACKEND
-                //method: 'PUT'
-                //data: {
-            //  }, 
+            dispatch(updateFromCart(cartItems[i].product, qty))
+            console.log('total Stock',cartItems[i].stocked)
         }
             
     }

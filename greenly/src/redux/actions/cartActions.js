@@ -25,5 +25,19 @@ const removeFromCart = (id) => (dispatch, getState) => {
     })
     localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
 }
+const updateFromCart = (product,qty) => async (dispatch, getState) => {
+    //make call to backend for a put route
+    //id needs to be stringifyied 
+    const { data } = await axios.put(`${process.env.REACT_APP_GREENLY_BACKEND}api/products/update/${product}`)
 
-export {addToCart, removeFromCart}
+    dispatch({
+        type: requestTypes.cartClear,
+        payload: {
+            stocked: data.stocked,
+            qty
+        }
+    })
+    localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
+}
+
+export {addToCart, removeFromCart, updateFromCart}
