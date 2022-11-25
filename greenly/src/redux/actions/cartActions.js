@@ -2,7 +2,7 @@ import axios from 'axios'
 import * as requestTypes from '../constants/cartConstants'
 
 const addToCart = (id, qty) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await axios.get(`${process.env.REACT_APP_GREENLY_BACKEND}api/products/${id}`)
 
     dispatch({
         type: requestTypes.addCart,

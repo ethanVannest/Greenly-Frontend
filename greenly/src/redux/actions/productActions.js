@@ -5,7 +5,7 @@ const indexOfProducts = () => async (dispatch) => {
     try {
         dispatch({type: requestTypes.getProducts})
 
-        const { data } = await axios.get("/api/products")
+        const { data } = await axios.get(`${process.env.REACT_APP_GREENLY_BACKEND}api/products`)
 
         dispatch({
             type: requestTypes.getProductsSuccess,
@@ -22,7 +22,7 @@ const indexOfProductsDetails = (id) => async (dispatch) => {
     try {
         dispatch({type: requestTypes.getProduct})
 
-        const { data } = await axios.get(`/api/products/${id}`)
+        const { data } = await axios.get(`${process.env.REACT_APP_GREENLY_BACKEND}api/products/${id}`)
 
         dispatch({
             type: requestTypes.getProductSuccess,
