@@ -61,7 +61,7 @@ export const Cart = () => {
   return (
     <>
       <div className="cartscreen">
-        <div>
+        <div className='cartscreen__left'>
           <h2>Shopping Cart</h2>
 
           {cartItems.length === 0 ? (
@@ -80,13 +80,13 @@ export const Cart = () => {
           )}
         </div>
 
-        <div>
-          <div>
+        <div className='cartscreen__right'>
+          <div className='cartscreen__info'>
             <p>Subtotal ({getCartCount()}) items</p>
             <p>${getCartSubTotal()}</p>
           </div>
           <div>
-            <button onClick={proceedToCheckoutHandler}>Proceed To Checkout</button>
+            <button className='checkoutButton' onClick={proceedToCheckoutHandler}>Proceed To Checkout</button>
           </div>
         </div>
       </div>
