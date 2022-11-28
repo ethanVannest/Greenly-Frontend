@@ -7,6 +7,8 @@ import { indexOfProductsDetails } from '../redux/actions/productActions'
 import { addToCart } from '../redux/actions/cartActions'
 import { useParams, useNavigate } from 'react-router-dom'
 
+import '../App.css'
+
 
 const ShowProduct = ({match, history}) => {
     
@@ -38,38 +40,39 @@ const ShowProduct = ({match, history}) => {
         : error ? <h2>{error}</h2> 
         : (
             <>
-             <div>
-            <div>
-            <img src={product.image
+             <div className='cartscreen'>
+                <div className='product_Right'>
+            <img className='product' src={product.image
             }alt={product.name}
             />
             </div>
 
             <div>
-                <p>{product.name}</p>
-                <p>{product.price}</p>
-                <p>{product.description}</p>
+                <p className='product_Name'>{product.name}</p>
+                <p className='product_Description'>{product.description}</p>
             </div>
         </div>
         
         <div>
             <div>
-                <p>
-                    Price: <span>{product.price}</span>
+                <div className='product_info'>
+                <p className='product_price'>
+                    Price: $<span>{product.price}</span>
                 </p>
-                <p>
+                <p className='product_status'>
                     Status: <span>{product.stocked > 0 ? "In Stock" : "Out of Stock"}</span>
                 </p>
-                <p>
+                <p className='quantity_Dropdown'>
                     Quantity: 
                     <select value={qty} onChange={(e) => setQty(e.target.value)}>
                         {[...Array(product.stocked).keys()].map((x) => (
                             <option key={x + 1} value={x+1}>{x + 1}</option>
-                        ))}
+                            ))}
                     </select>
                 </p>
-                <p>
-                    {product.stocked > 0 ? <button type='button' onClick={addToCartHandler}>Add To Cart</button> : "Out of Stock"
+                    </div>
+                <p className='addToCart'>
+                    {product.stocked > 0 ? <button className='addToCartButton'  type='button' onClick={addToCartHandler}>Add To Cart</button> : "Out of Stock"
                 }
                 </p>
             </div>
